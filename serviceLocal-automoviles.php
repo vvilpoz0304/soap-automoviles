@@ -8,11 +8,10 @@
 include 'GestionAutomovilesAuth.php';
 
 //$test = new GestionAutomovilesAuth;
-//$test->TestBD(); 
+//$test->TestBD();
 
-$soap = new SoapServer(null, array('uri' => 'http://dwes.infinityfreeapp.com/soap-automoviles/',
-    'location' => 'http://dwes.infinityfreeapp.com/soap-automoviles/service-automoviles-auth.php',
+$soap = new SoapServer(null, array('uri' => 'http://localhost/soap-automoviles/',
+    'location' => 'http://localhost/soap-automoviles/GestionAutomovilesAuth.php',
     'trace' => 1));
 $soap->setClass('GestionAutomovilesAuth');
 $soap->handle();
-
