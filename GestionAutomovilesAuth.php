@@ -43,6 +43,19 @@ class GestionAutomovilesAuth {
         return $marcas;
     }
 
+    public function ObtenerMarcasUrl(){
+        $con = $this->ConectarMarcas();
+        $url = array();
+
+        if($con){
+            $result = $con->query('SELECT marca, url FROM marcas');
+
+            while($row = $result->fetch(PDO::FETCH_ASSOC))
+                $url[$row['id']] = $row['marca'];
+                $url[$row['url']] = $row['url'];
+        }
+    }
+
     public function ObtenerModelos($marca) {
         $marca = intVal($marca);
         $modelos = array();
@@ -62,6 +75,8 @@ class GestionAutomovilesAuth {
 
         return $modelos;
     }
+
+    
     public static function authenticate($header_params) {
 
         if($header_params->username == 'ies' && $header_params->password == 'daw') {

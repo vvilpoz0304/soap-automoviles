@@ -12,6 +12,8 @@
     $header = new SoapHeader("http://localhost/serviceLocal-automoviles.php", "authenticate", $head_params, false);
     $client->__setSoapHeaders($header);
 
+    
+
 
 
 

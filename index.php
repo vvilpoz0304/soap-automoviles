@@ -33,12 +33,13 @@
 			<!-- Main -->
 				<div id="main">
 					<div class="inner">
-
+					
 					<!-- Boxes -->
 
 						<div class="thumbnails">
                             <?php
                             require_once "client.php";
+
                             $marcas = $client->ObtenerMarcasUrl();
 
                             foreach ($marcas as $marca => $url) {
