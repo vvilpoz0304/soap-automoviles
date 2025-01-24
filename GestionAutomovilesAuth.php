@@ -1,9 +1,6 @@
 <?php
-/*
- * Servicio Web en PHP por Jose Hernández
- * https://josehernandez.es/2011/01/18/servicio-web-php.html
- * https://web.archive.org/web/20201026070426/https://josehernandez.es/2011/01/18/servicio-web-php.html
- */
+
+
 
 class GestionAutomovilesAuth {
 
@@ -30,6 +27,7 @@ class GestionAutomovilesAuth {
         }
     }
 
+
     public function ObtenerMarcas() {
         $con = $this->ConectarMarcas();
 
@@ -45,14 +43,10 @@ class GestionAutomovilesAuth {
 
     public function ObtenerMarcasUrl(){
         $con = $this->ConectarMarcas();
-        $url = array();
 
         if($con){
             $result = $con->query('SELECT marca, url FROM marcas');
-
-            while($row = $result->fetch(PDO::FETCH_ASSOC))
-                $url[$row['id']] = $row['marca'];
-                $url[$row['url']] = $row['url'];
+            return $result->fetchAll(PDO::FETCH_ASSOC);
         }
     }
 
@@ -76,16 +70,6 @@ class GestionAutomovilesAuth {
         return $modelos;
     }
 
-    
-    public static function authenticate($header_params) {
 
-        if($header_params->username == 'ies' && $header_params->password == 'daw') {
 
-            return true;
-
-        }
-
-        else throw new SoapFault('Wrong user/pass combination', 401);
-
-    }
 }
