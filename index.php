@@ -34,9 +34,7 @@
 
 						<div class="thumbnails">
                             <?php
-                            require_once "client.php";
-
-                            $marcas = $client->ObtenerMarcasUrl();
+                            require_once "client/clientCoches.php";
 
                             foreach ($marcas as $marca => $url) {
                             ?>
