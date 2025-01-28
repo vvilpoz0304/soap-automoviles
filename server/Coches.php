@@ -3,7 +3,7 @@ class Coches {
     private $con;
     private $authenticated;
 
-    public function __construct()
+    function __construct()
     {
         $this->con = $this->connection();
         $this->authenticated = false;
@@ -12,6 +12,7 @@ class Coches {
     {
         try {
             include_once "db_params.php"; // Declaramos los datos de la base datos en el archivo "db_params.php"
+
             $con = new PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
             $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return $con;
@@ -21,16 +22,17 @@ class Coches {
     }
 
     // Funcion para autenticar el usuario;
-    function authenticate($header_params)
+    public function authenticate($header_params)
     {
 
         if ($header_params->username == 'valentin' && $header_params->password == 'daw') {
+            $this->authenticated = true;
             return true;
         } else throw new SoapFault('Wrong user/pass combination', 401);
     }
 
     // Funcion para obtener las marcas y las url de los videos;
-    function ObtenerMarcasUrl(){
+    public function ObtenerMarcasUrl(){
 
         // En caso de que el usuario no esté autenticado o la conexion a la base de datos falle, se mostrará el error;
         if(!$this->authenticated){
@@ -47,7 +49,7 @@ class Coches {
         return json_encode($result); // Serializamos el resultado;
     }
 
-    function ObtenerModelos($marca) {
+    public function ObtenerModelos($marca) {
 
         if(!$this->authenticated){
             throw new SoapFault('Client', "User not authenticated.");
