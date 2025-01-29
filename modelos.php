@@ -1,5 +1,5 @@
 <?php
-include "client/client.php";
+include "client/clientCoches.php";
 
 $marca = isset($_GET["marca"]) ? $_GET["marca"] : $marca = "Ford";
 
@@ -25,7 +25,7 @@ if(is_array($modelos) && !empty($modelos)){
     foreach($modelos as $modelo){
         ?>
         <figure>
-            <img src="img/<?= strtolower($marca) ?>.png" alt="logo <?= $marca ?>" height="60" width="100"/>
+            <img src="images/<?= strtolower($marca) ?>.png" alt="logo <?= $marca ?>" height="60" width="100"/>
             <figcaption><?= $modelo["modelo"] ?></figcaption>
         </figure>
         <?php

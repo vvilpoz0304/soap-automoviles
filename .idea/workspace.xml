@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="44a0881e-7b9c-486d-a6ce-43ade74a8ae8" name="Changes" comment="Ya muestra cosas en el index, hay progreso">
-      <change afterPath="$PROJECT_DIR$/modelos.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/clientCoches.php" beforeDir="false" afterPath="$PROJECT_DIR$/client/clientCoches.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modelos.php" beforeDir="false" afterPath="$PROJECT_DIR$/modelos.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/Coches.php" beforeDir="false" afterPath="$PROJECT_DIR$/server/Coches.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/service-automoviles.php" beforeDir="false" afterPath="$PROJECT_DIR$/server/service-automoviles.php" afterDir="false" />
     </list>
@@ -21,7 +24,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="/opt/lampp/bin/php" />
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="/opt/lampp/bin/php/" />
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -78,6 +81,8 @@
       <workItem from="1737981264156" duration="1198000" />
       <workItem from="1737986180887" duration="456000" />
       <workItem from="1738013093913" duration="2664000" />
+      <workItem from="1738080364970" duration="1959000" />
+      <workItem from="1738176898320" duration="1731000" />
     </task>
     <task id="LOCAL-00001" summary="Ya muestra cosas en el index, hay progreso">
       <option name="closed" value="true" />

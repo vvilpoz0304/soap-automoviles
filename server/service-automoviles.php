@@ -2,7 +2,7 @@
 
 include 'Coches.php';
 
-$soap = new SoapServer(null, array('uri' => 'http://valentinvilla.great-site.net/soap-ajax/service-automoviles.php'));
+$soap = new SoapServer(null, array('uri' => 'http://localhost/soap-automoviles/server/service-automoviles.php'));
 $soap->setClass('Coches');
 $soap->handle();
 

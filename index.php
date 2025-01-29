@@ -36,10 +36,13 @@
                             <?php
                             require_once "client/clientCoches.php";
 
+                            $marcas = $client->ObtenerMarcasUrl();
+                            $marcas = json_decode($marcas, true);
+
                             foreach ($marcas as $marca) {
                                 ?>
                                 <div class="box">
-                                    <a href="<?= $marca["url"] ?>" class="image fit" title="ver video"><img src="img/<?= strtolower($marca["marca"]) ?>.png" alt="logo <?= $marca["marca"] ?>" /></a>
+                                    <a href="<?= $marca["url"] ?>" class="image fit" title="ver video"><img src="images/<?= strtolower($marca["marca"]) ?>.png" alt="logo <?= $marca["marca"] ?>" /></a>
                                     <div class="inner">
                                         <h3><a href="modelos.php?marca=<?= $marca["marca"] ?>" data-poptrox="ajax,600x400">Modelos <?= $marca["marca"] ?></a></h3>
                                         <a href="<?= $marca["url"] ?>" class="button style2 fit" data-poptrox="youtube,800x400">Ver video <?= $marca["marca"] ?></a>

@@ -1,5 +1,7 @@
 <?php
-class Coches {
+
+class Coches
+{
     private $con;
     private $authenticated;
 
@@ -8,6 +10,7 @@ class Coches {
         $this->con = $this->connection();
         $this->authenticated = false;
     }
+
     function connection()
     {
         try {
@@ -16,7 +19,7 @@ class Coches {
             $con = new PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
             $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return $con;
-        }catch (PDOException $e){
+        } catch (PDOException $e) {
             print "Error!: " . $e->getMessage() . "<br/>";
         }
     }
@@ -32,13 +35,14 @@ class Coches {
     }
 
     // Funcion para obtener las marcas y las url de los videos;
-    public function ObtenerMarcasUrl(){
+    public function ObtenerMarcasUrl()
+    {
 
         // En caso de que el usuario no esté autenticado o la conexion a la base de datos falle, se mostrará el error;
-        if(!$this->authenticated){
+        if (!$this->authenticated) {
             throw new SoapFault('Client', "User not authenticated.");
         }
-        if(!$this->con){
+        if (!$this->con) {
             throw new SoapFault('Server', "Cannot connect the database.");
         }
 
@@ -49,30 +53,25 @@ class Coches {
         return json_encode($result); // Serializamos el resultado;
     }
 
-    public function ObtenerModelos($marca) {
-
-        if(!$this->authenticated){
+    function ObtenerModelos($marca)
+    {
+        if (!$this->authenticated) {
             throw new SoapFault('Client', "User not authenticated.");
         }
-        if(!$this->con){
+        if (!$this->con) {
             throw new SoapFault('Server', "Cannot connect the database.");
         }
 
-        $marca = intVal($marca);
-        $modelos = array();
+        //Hacemos la petición de las marcas y url a la base de datos
+        $marca = htmlentities($marca);
+        /*$sql = "SELECT modelo FROM modelos WHERE marca=(SELECT id FROM marcas WHERE marca= :marca)";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->bindParam(":marca", $marca);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);*/
 
-            if ($con) {
-                // HAcemnos un prepare statement mediante un subselect, obtenemos el modelo el cual la marca es igual al id de la marca pasada;
-                $stmt = 'SELECT modelo FROM modelos WHERE marca = (SELECT id FROM marcas WHERE marca = ?)';
-                $stmt = $con->prepare($stmt);
-                $stmt-> bindParam(1, $marca);
-                $stmt->execute();
-
-                $modelos = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-
-            }
-            $result = $modelos;
+        $sql = "SELECT modelo FROM modelos WHERE marca=(SELECT id FROM marcas WHERE marca = '$marca')";
+        $data = $this->con->query($sql);
+        $modelos = $data->fetchAll(PDO::FETCH_ASSOC);
 
         return json_encode($modelos);
     }
